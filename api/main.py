@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_bootstrap import Bootstrap5
 app= Flask(__name__)
 
@@ -11,5 +11,6 @@ def hello_world():
     return render_template("index.html")
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.errorhandler(404)
+def page_not_found(e):
+    return jsonify({"status": 404, "message": "Not Found"}), 404
