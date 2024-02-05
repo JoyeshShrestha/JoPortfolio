@@ -15,5 +15,24 @@ def hello_world():
 def page_not_found(e):
     return jsonify({"status": 404, "message": "Not Found"}), 404
 
+@app.after_request
+def add_security_headers(response):
+    # Content-Security-Policy
+    response.headers['Content-Security-Policy'] = "default-src 'self' https://trusted-source.com; script-src 'self' https://trusted-scripts.com;"
+    
+    # X-Frame-Options
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    
+    # X-Content-Type-Options
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    
+    # Referrer-Policy
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    
+    # Permissions-Policy
+    response.headers['Permissions-Policy'] = 'geolocation=(self "https://yourdomain.com"), microphone=()'
+
+    return response
+
 if __name__ == "__main__":
     app.run(debug=False)
