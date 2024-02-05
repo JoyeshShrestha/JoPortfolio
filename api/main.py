@@ -18,7 +18,6 @@ def page_not_found(e):
 @app.after_request
 def add_security_headers(response):
     # Content-Security-Policy
-    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' https://trusted-scripts.com; style-src 'self' https://trusted-styles.com 'unsafe-inline';"
     
     
     # X-Frame-Options
