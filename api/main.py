@@ -1,8 +1,8 @@
 from flask import Flask, render_template, jsonify, request,url_for
 import smtplib
 import os
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 password = os.environ["email_password"] 
