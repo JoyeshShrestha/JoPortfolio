@@ -68,4 +68,4 @@ def add_security_headers(response):
     return response
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
