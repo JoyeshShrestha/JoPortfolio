@@ -2,8 +2,8 @@ from flask import Flask, send_file, render_template, jsonify, request,url_for
 import smtplib
 import os
 import datetime
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 password = os.environ["email_password"] 
@@ -78,4 +78,4 @@ def add_security_headers(response):
     return response
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
