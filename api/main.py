@@ -1,9 +1,9 @@
-from flask import Flask, render_template, jsonify, request,url_for
+from flask import Flask, send_file, render_template, jsonify, request,url_for
 import smtplib
 import os
 import datetime
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 
 password = os.environ["email_password"] 
@@ -50,6 +50,14 @@ def hello_world():
 def page_not_found(e):
     return jsonify({"status": 404, "message": "Not Found"}), 404
 
+@app.route('/download')
+def download_file():
+    print("yeta aayo")
+    file_path = 'static/files/JoyeshShresthaCVv3.pdf'  # Path to the file you want to download
+    return send_file(file_path, as_attachment=True)
+
+
+
 @app.after_request
 def add_security_headers(response):
     # Content-Security-Policy
@@ -70,4 +78,4 @@ def add_security_headers(response):
     return response
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
