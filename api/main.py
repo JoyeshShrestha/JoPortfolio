@@ -53,7 +53,7 @@ def page_not_found(e):
 @app.route('/download')
 def download_file():
     print("yeta aayo")
-    file_path = 'static/files/JoyeshShresthaCVv3.pdf'  # Path to the file you want to download
+    file_path = 'static/files/JoyeshShrestha2025.pdf'  # Path to the file you want to download
     return send_file(file_path, as_attachment=True)
 
 
